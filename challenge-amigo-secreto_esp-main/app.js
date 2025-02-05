@@ -1,6 +1,4 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
-
-// Aqui se guardan los nombres
+// Aquí se guardan los nombres
 let amigos = [];
 
 // Función que se llama cuando se hace clic en el botón
@@ -14,9 +12,25 @@ function agregarAmigo() {
         amigos.push(nombre);
         console.log(amigos); 
 
-        // Limpiamos el campo de entrada xd
+        // Limpiamos el campo de entrada
         input.value = '';
+
+        // Actualizamos la lista en HTML
+        mostrarLista();
     } else {
         alert("Por favor, ingresa un nombre.");
     }
+}
+
+// Función para mostrar los amigos en la lista HTML
+function mostrarLista() {
+    const lista = document.getElementById('listaAmigos');
+    lista.innerHTML = ''; // Limpiar la lista antes de actualizarla
+
+    // Crear un elemento <li> por cada amigo y agregarlo a la lista
+    amigos.forEach(amigo => {
+        const li = document.createElement('li');
+        li.textContent = amigo;
+        lista.appendChild(li);
+    });
 }
