@@ -22,15 +22,34 @@ function agregarAmigo() {
     }
 }
 
-// Función para mostrar los amigos en la lista HTML
-function mostrarLista() {
+// Mostramos los amigos en una lista
+ function mostrarLista() {
     const lista = document.getElementById('listaAmigos');
     lista.innerHTML = ''; // Limpiar la lista antes de actualizarla
 
-    // Crear un elemento <li> por cada amigo y agregarlo a la lista
+    // Crear un elemento <li> para cada amigo
     amigos.forEach(amigo => {
         const li = document.createElement('li');
         li.textContent = amigo;
         lista.appendChild(li);
     });
+}
+
+// Función para sortear un amigo al azar
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("No hay amigos para sortear.");
+        return;
+    }
+
+    // Elegimos un amigo al azar
+    const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+    const amigoSorteado = amigos[indiceAleatorio];
+
+    // Mostramos el amigo sorteado en el <ul> de resultados xd
+    const resultado = document.getElementById('resultado');
+    resultado.innerHTML = ''; 
+    const liResultado = document.createElement('li');
+    liResultado.textContent = `Amigo secreto: ${amigoSorteado}`;
+    resultado.appendChild(liResultado);
 }
